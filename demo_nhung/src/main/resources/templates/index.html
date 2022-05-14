@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dữ liệu cảm biến</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Jquery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            $.get("/getdata", function(data){
+               // alert(data);
+                $duLieu = JSON.parse(data);
+                $strHTML = ''
+                //alert($duLieu[0].doAm);
+                $.map($duLieu, function(value, index){
+                    $strHTML += '<tr>\n';
+                    $strHTML += '<td>'+(index+1)+'</td>\n'
+                    $strHTML += '<td>'+value.doAm+'%</td>\n';
+                    $strHTML += '<td>'+value.nhietDo+'&#8451;</td>\n';
+                    $strHTML += '<td>'+value.giaTri+'</td>\n';
+                    $strHTML += '<td>'+value.thoiGian+'</td>\n';
+                    $strHTML += '</tr>\n';
+
+                });
+
+                $('#tableData').html($strHTML);
+            });
+        });
+
+        setTimeout(function(){
+            window.location.reload(1);
+        }, 2000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Dữ liệu cảm biến</h1>
+        
+        <table class="table-bordered table m-5">
+            <thead>
+                <tr>
+                    <td>TT</td>
+                    <td>Độ ẩm</td>
+                    <td>Nhiệt độ</td>
+                    <td>Giá trị cảm biến</td>
+                    <td>Thời gian</td>
+                </tr>
+            </thead>
+            <tbody id="tableData" style="margin-left: 80%; margin-right: 80%;">
+                <tr>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
