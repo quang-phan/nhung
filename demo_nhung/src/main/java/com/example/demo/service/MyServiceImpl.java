@@ -19,7 +19,7 @@ public class MyServiceImpl implements MyService{
 
     @Override
     public List<DuLieu> getData() {
-        List<DuLieu> list = duLieuRepository.findTop6ByOrderByIdDesc();
+        List<DuLieu> list = duLieuRepository.findTop15ByOrderByIdDesc();
         return list;
     }
 

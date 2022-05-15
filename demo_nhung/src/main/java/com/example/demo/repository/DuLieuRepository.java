@@ -11,5 +11,5 @@ public interface DuLieuRepository extends JpaRepository<DuLieu, Integer> {
     @Query("SELECT dl FROM DuLieu dl")
     List<DuLieu> getAll();
 
-    List<DuLieu> findTop6ByOrderByIdDesc();
+    List<DuLieu> findTop15ByOrderByIdDesc();
 }
