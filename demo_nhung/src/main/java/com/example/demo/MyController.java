@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,10 +40,10 @@ public class MyController {
         return new Gson().toJson(list);
     }
 
-    @GetMapping("/addinfo")
+    @PostMapping("/addinfo")
     @ResponseBody
-    String addData(@RequestParam(name = "temp") int temp,
-                   @RequestParam(name = "humi") int humi,
+    String addData(@RequestParam(name = "temp") float temp,
+                   @RequestParam(name = "humi") float humi,
                    @RequestParam(name = "ldr") int ldr){
         DuLieu duLieu = new DuLieu();
         Date date = new Date();
